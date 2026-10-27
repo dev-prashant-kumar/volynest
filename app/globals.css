@@ -24,3 +24,370 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* ================================
+   VOLYNEST INTERACTIONS & MOTION
+================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+@keyframes volynest-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes volynest-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes volynest-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes volynest-orb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-12px, 14px) scale(1.06);
+  }
+}
+
+/* Hero animations */
+.hero-badge,
+.hero-heading,
+.hero-description,
+.hero-actions,
+.hero-trust {
+  opacity: 0;
+  animation: volynest-fade-up 700ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero-badge { animation-delay: 80ms; }
+.hero-heading { animation-delay: 180ms; }
+.hero-description { animation-delay: 280ms; }
+.hero-actions { animation-delay: 380ms; }
+.hero-trust { animation-delay: 480ms; }
+
+.hero-dashboard {
+  opacity: 0;
+  animation: volynest-fade-up 850ms 250ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero-orb-one {
+  animation: volynest-orb 10s ease-in-out infinite;
+}
+
+.hero-orb-two {
+  animation: volynest-orb 12s ease-in-out infinite reverse;
+}
+
+.floating-icon {
+  animation: volynest-float 4s ease-in-out infinite;
+}
+
+/* Scroll reveal */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation underline */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-block: 8px;
+  transition: color 250ms ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  left: 0;
+  height: 2px;
+  content: "";
+  border-radius: 999px;
+  background: #147d55;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #147d55;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Brand interaction */
+.brand-icon {
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.brand-link:hover .brand-icon {
+  transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 8px 22px rgb(20 125 85 / 25%);
+}
+
+/* Cards */
+.interactive-card {
+  transition:
+    transform 300ms cubic-bezier(.2, .7, .2, 1),
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgb(23 43 37 / 8%);
+  border-color: rgb(20 125 85 / 30%);
+}
+
+.card-icon {
+  transition:
+    transform 300ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+.interactive-card:hover .card-icon {
+  transform: rotate(-5deg) scale(1.06);
+}
+
+/* Buttons */
+.interactive-button {
+  transition:
+    transform 200ms ease,
+    box-shadow 250ms ease,
+    background-color 250ms ease;
+}
+
+.interactive-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgb(20 125 85 / 20%);
+}
+
+.interactive-button:active {
+  transform: translateY(0) scale(.98);
+}
+
+/* Featured card */
+.featured-card {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.featured-card:hover {
+  box-shadow: 0 15px 32px rgb(0 0 0 / 12%);
+}
+
+.featured-link {
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease;
+}
+
+.featured-link:hover {
+  transform: translateX(3px);
+  background-color: #e5f4e9;
+}
+
+/* Text underline */
+.text-link {
+  background-image: linear-gradient(#147d55, #147d55);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 2px;
+  transition:
+    color 250ms ease,
+    background-size 280ms ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: #147d55;
+  background-size: 100% 2px;
+}
+
+/* Opportunity links */
+.opportunity-link {
+  transition:
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+}
+
+.opportunity-link:hover {
+  color: white;
+  background-color: #147d55;
+  border-color: #147d55;
+  transform: translateY(-2px);
+}
+
+/* Save buttons */
+.save-button {
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.save-button:hover {
+  transform: scale(1.08);
+}
+
+.save-button:active {
+  transform: scale(.92);
+}
+
+/* Category filters */
+.filter-button {
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filter-button:hover {
+  transform: translateY(-1px);
+}
+
+.filter-active {
+  animation: volynest-fade-in 200ms ease both;
+}
+
+/* Expandable feature cards */
+.feature-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 300ms ease,
+    opacity 250ms ease,
+    margin-top 300ms ease;
+}
+
+.feature-details > p {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.feature-details-open {
+  grid-template-rows: 1fr;
+  margin-top: 16px;
+  opacity: 1;
+}
+
+.feature-arrow {
+  transition: transform 250ms ease;
+}
+
+button:hover .feature-arrow {
+  transform: translateX(4px);
+}
+
+/* Mobile navigation */
+.mobile-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  padding-top: 0;
+  padding-bottom: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    grid-template-rows 250ms ease,
+    opacity 250ms ease,
+    visibility 250ms ease,
+    padding 250ms ease;
+}
+
+.mobile-menu > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mobile-menu-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-nav-link {
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    padding-left 200ms ease;
+}
+
+.mobile-nav-link:hover {
+  padding-left: 20px;
+  color: #147d55;
+  background-color: #e5f4e9;
+}
+
+/* CTA decoration */
+.cta-panel {
+  isolation: isolate;
+}
+
+.cta-orb {
+  animation: volynest-orb 9s ease-in-out infinite;
+}
+
+/* Keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #147d55;
+  outline-offset: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+  }
+}
+
